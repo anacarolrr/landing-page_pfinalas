@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Potência Pura | Do Campo às Pistas</title>
+  <title>Potência Pura | Ferrari Experience</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     :root {
@@ -15,6 +15,7 @@
       background-color: #0a0a0a; 
       color: white; 
       font-family: 'Segoe UI', Roboto, sans-serif;
+      transition: background-color 0.5s ease; /* Suaviza a troca de cor da função 1 */
     }
 
     /* Navbar */
@@ -30,11 +31,7 @@
       margin-bottom: 50px;
     }
 
-    .macaco{
-        color: black;
-    }
-
-    /* Card Original Ajustado */
+    /* Card */
     .card { 
       margin: 0 auto; 
       box-shadow: 0 10px 30px rgba(255, 193, 7, 0.15); 
@@ -75,14 +72,19 @@
 <body>
 
   <nav class="navbar navbar-dark sticky-top">
-    <div class="container">
+    <div class="container d-flex justify-content-between">
       <a class="navbar-brand fw-bold" href="#">POTÊNCIA PURA</a>
+      
+      <div>
+        <button onclick="personalizarSaudacao()" class="btn btn-sm btn-outline-warning me-2">Identificar Piloto</button>
+        <button onclick="alternarModoCorrida()" class="btn btn-sm btn-outline-danger">Modo Corrida</button>
+      </div>
     </div>
   </nav>
 
   <header class="hero text-center">
     <div class="container">
-      <h1 class="display-3 fw-bold text-uppercase mb-3">A Evolução da <span class="text-warning">Força</span></h1>
+      <h1 id="main-title" class="display-3 fw-bold text-uppercase mb-3">A Evolução da <span class="text-warning">Força</span></h1>
       <p class="lead mb-4">A conexão lendária entre a alma selvagem e a engenharia de precisão.</p>
       <a href="#experiencia" class="btn btn-outline-warning btn-lg px-5">Explorar Experiência</a>
     </div>
@@ -104,7 +106,7 @@
 
             <div class="d-grid gap-3">
               <button onclick="relinchar()" class="btn btn-warning py-3 fw-bold" id="btnRelincho">
-                🐎
+                🐎 OUVIR RELINCHO
               </button>
               <a href="https://www.ferrari.com/en-BR" target="_blank" class="btn btn-danger py-3 fw-bold">
                 SITE OFICIAL FERRARI
@@ -132,7 +134,7 @@
 
     <section class="video-container text-center">
       <h2 class="mb-4 text-uppercase fw-bold">Supercarros na Pista</h2>
-      <div class="ratio ratio-16x9 shadow-lg">
+      <div class="ratio ratio-16x9 shadow-lg border border-secondary">
         <iframe src="https://www.youtube.com/embed/PYwMqeMqTkU" title="Ferrari Supercarros" allowfullscreen></iframe>
       </div>
       <div class="py-4">
@@ -143,7 +145,7 @@
 
   <footer class="footer text-center">
     <div class="container">
-      <p class="mb-0">© 2024 Potência Pura - Landing Page de Demonstração</p>
+      <p class="mb-0">© 2026 Potência Pura - Landing Page de Demonstração</p>
       <small class="text-muted">Desenvolvido com Bootstrap 5</small>
     </div>
   </footer>
@@ -151,13 +153,44 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
+    // Função Original: Áudio e Texto do Botão
     function relinchar() {
       const audio = document.getElementById("somCavalo");
       const botao = document.getElementById("btnRelincho");
       audio.currentTime = 0; 
       audio.play();
       botao.innerText = "SINTA A FORÇA...";
-      setTimeout(() => { botao.innerText = "🐎"; }, 1500);
+      setTimeout(() => { botao.innerText = "🐎 OUVIR RELINCHO"; }, 1500);
+    }
+
+    // --- NOVAS FUNÇÕES DE MANIPULAÇÃO DO DOM ---
+
+    // Função 1: Altera o conteúdo de texto (Saudação personalizada no Título)
+    function personalizarSaudacao() {
+      const titulo = document.getElementById("main-title");
+      const nomePiloto = prompt("Digite seu nome para o cockpit:");
+      
+      if (nomePiloto != null && nomePiloto != "") {
+        // Modifica o texto e o HTML interno do elemento
+        titulo.innerHTML = `Piloto: <span class="text-danger">${nomePiloto}</span>`;
+      }
+    }
+
+    // Função 2: Altera estilos e classes (Modo de cores da página)
+    function alternarModoCorrida() {
+      const body = document.body;
+      const cards = document.querySelectorAll('.card');
+      
+      // Verifica se o modo especial já está ativo através de uma cor de fundo específica
+      if (body.style.backgroundColor === "rgb(40, 0, 0)") {
+        // Volta ao normal (Preto)
+        body.style.backgroundColor = "#0a0a0a";
+        alert("Modo padrão ativado.");
+      } else {
+        // Muda para um tom de vermelho escuro agressivo
+        body.style.backgroundColor = "#280000";
+        alert("MODO CORRIDA: Performance máxima ativada!");
+      }
     }
   </script>
 
