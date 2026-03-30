@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Potência Pura | Do Campo às Pistas</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --ferrari-red: #ff2800;
+      --gold-cavalo: #ffc107;
+    }
+
+    body { 
+      background-color: #0a0a0a; 
+      color: white; 
+      font-family: 'Segoe UI', Roboto, sans-serif;
+    }
+
+    /* Navbar */
+    .navbar { background-color: rgba(0,0,0,0.9); border-bottom: 1px solid #333; }
+
+    /* Hero Section */
+    .hero {
+      padding: 100px 0;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                  url('https://images.unsplash.com/photo-1592198084033-aade902d1aae?auto=format&fit=crop&q=80&w=1920');
+      background-size: cover;
+      background-position: center;
+      margin-bottom: 50px;
+    }
+
+    /* Card Original Ajustado */
+    .card { 
+      margin: 0 auto; 
+      box-shadow: 0 10px 30px rgba(255, 193, 7, 0.15); 
+      border: 1px solid #333; 
+      background-color: #1a1a1a;
+      transition: transform 0.3s ease;
+    }
+    .card:hover { transform: translateY(-10px); }
+
+    .card-img-top { 
+      height: 350px; 
+      object-fit: contain; 
+      background-color: #111;
+      border-bottom: 1px solid #333;
+    }
+
+    /* Video Section */
+    .video-container {
+      max-width: 900px;
+      margin: 80px auto;
+      padding: 20px;
+      background: #111;
+      border-radius: 15px;
+      border: 1px solid #222;
+    }
+
+    .footer {
+      padding: 50px 0;
+      background: #000;
+      border-top: 1px solid #222;
+      color: #666;
+    }
+
+    .btn-danger { background-color: var(--ferrari-red); border: none; }
+    .text-warning { color: var(--gold-cavalo) !important; }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">POTÊNCIA PURA</a>
+    </div>
+  </nav>
+
+  <header class="hero text-center">
+    <div class="container">
+      <h1 class="display-3 fw-bold text-uppercase mb-3">A Evolução da <span class="text-warning">Força</span></h1>
+      <p class="lead mb-4">A conexão lendária entre a alma selvagem e a engenharia de precisão.</p>
+      <a href="#experiencia" class="btn btn-outline-warning btn-lg px-5">Explorar Experiência</a>
+    </div>
+  </header>
+
+  <main class="container" id="experiencia">
+    <div class="row align-items-center">
+      
+      <div class="col-lg-5 mb-5">
+        <div class="card w-100">
+          <img src="https://i.pinimg.com/736x/ac/83/ff/ac83ff5e128d8d5775bcfbd6957093b9.jpg" class="card-img-top" alt="Cavalo Inteiro">
+          <div class="card-body p-4 text-center">
+            <h5 class="card-title text-uppercase fw-bold text-warning mb-3">O Legado do Cavalo</h5>
+            <p class="card-text text-secondary mb-4">Desde os campos abertos até o asfalto das pistas mais velozes do mundo.</p>
+            
+            <audio id="somCavalo">
+              <source src="https://www.w3schools.com/tags/horse.mp3" type="audio/mpeg">
+            </audio>
+
+            <div class="d-grid gap-3">
+              <button onclick="relinchar()" class="btn btn-warning py-3 fw-bold" id="btnRelincho">
+                🐎
+              </button>
+              <a href="https://www.ferrari.com/en-BR" target="_blank" class="btn btn-danger py-3 fw-bold">
+                SITE OFICIAL FERRARI
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-7 ps-lg-5">
+        <h2 class="display-5 fw-bold mb-4">Onde tudo começou...</h2>
+        <p class="text-secondary fs-5">O símbolo do cavalo rampante não é apenas uma logo, é a representação de <strong>instinto, velocidade e poder incontrolável</strong>.</p>
+        <div class="row mt-5">
+          <div class="col-md-6 mb-4">
+            <h4 class="text-warning">Pureza</h4>
+            <p class="text-secondary">O instinto animal que dita o ritmo da competição.</p>
+          </div>
+          <div class="col-md-6 mb-4">
+            <h4 class="text-danger">Velocidade</h4>
+            <p class="text-secondary">A tecnologia italiana levada ao limite absoluto.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="video-container text-center">
+      <h2 class="mb-4 text-uppercase fw-bold">Supercarros na Pista</h2>
+      <div class="ratio ratio-16x9 shadow-lg">
+        <iframe src="https://www.youtube.com/embed/PYwMqeMqTkU" title="Ferrari Supercarros" allowfullscreen></iframe>
+      </div>
+      <div class="py-4">
+        <p class="text-secondary">Sinta a adrenalina dos motores V12 no mítico circuito de Fiorano.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer text-center">
+    <div class="container">
+      <p class="mb-0">© 2024 Potência Pura - Landing Page de Demonstração</p>
+      <small class="text-muted">Desenvolvido com Bootstrap 5</small>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    function relinchar() {
+      const audio = document.getElementById("somCavalo");
+      const botao = document.getElementById("btnRelincho");
+      audio.currentTime = 0; 
+      audio.play();
+      botao.innerText = "SINTA A FORÇA...";
+      setTimeout(() => { botao.innerText = "🐎"; }, 1500);
+    }
+  </script>
+
+</body>
+</html>
